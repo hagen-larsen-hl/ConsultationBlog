@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="">
+    <h1 class="px-4 text-gray display-4">Collaborate with Others</h1>
+    <h4 class="p-4 text-gray display-8">
+        Welcome to our community. Find resources to help you troubleshoot issues, understand functionality, and make the
+        most of your Odoo experience.
+    </h4>
+</div>
+
+<div class="card h-50">
+    <h1 class="px-4 py-2 display-4">Recent Posts</h1>
+    <div class="h-75">
+        <div class="mx-4 h-25 border d-flex flex-row">
+            <div class="w-100">
+                <div class="d-flex align-items-center">
+                    <p class="h4 display-8 text-truncate p-2 m-0">Doing Something in Odoo in the Right Way</p>
+                    <p class="h4 display-8 text-truncate p-2 m-0 text-muted">- Author Name</p>
+                </div>
+                <p class="text-truncate px-2 text-muted">In this article, we are going to talk about doing something in
+                    Odoo, but
+                    we are going to talk about doing it in the right way so that you don't run into problems with it in
+                    the future.</p>
+            </div>
+        </div>
+        <div class="mx-4 h-25 border d-flex flex-row">
+            <div class="w-100">
+                <div class="d-flex align-items-center">
+                    <p class="h4 display-8 text-truncate p-2 m-0">Doing Something in Odoo in the Right Way But Better
+                    </p>
+                    <p class="h4 display-8 text-truncate p-2 m-0 text-muted">- Author Name</p>
+                </div>
+                <p class="text-truncate px-2">In this article, we are going to talk about doing something in Odoo, but
+                    we are going to talk about doing it in the right way so that you don't run into problems with it in
+                    the future.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+
+<div class="px-4">
+    <div class="">
+        <h2 class="pt-4 display-6">Register</h2>
+        <p class="">You experience matters. Sign up to comment on posted articles and suggest ideas for future content.
+        </p>
+    </div>
+    <div>
+        <h2 class="pt-4 display-6">Most Popular</h2>
+        <div class="d-flex flex-row">
+            <div>
+                <a class="text-truncate link">This is where the titel woudl be</a>
+                <p class="text-muted">13 days ago</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2 class="pt-4 display-6">Best Authors</h2>
+        <div class="d-flex flex-row">
+            <div>
+                <a class="text-truncate link">Author Name</a>
+                <p class="text-muted">13 posts</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2 class="pt-4 display-6">Partners</h2>
+        <div class="d-flex flex-row">
+            <div>
+                <a class="text-truncate link">Agency Title</a>
+                <p class="text-muted">4.3/5</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
