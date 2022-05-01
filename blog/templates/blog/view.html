@@ -16,6 +16,8 @@
     </div>
     <div class="p-4">
         <p class="display-6">Comments</p>
+
+        {% if user.is_authenticated %}
         <div class="d-flex justify-content-center">
             <div class="card w-100 my-2">
                 <div class="card-header">
@@ -34,6 +36,11 @@
                 </div>
             </div>
         </div>
+        {% else %}
+        <div class="d-flex">
+                <p class="display-8">Login/Register to comment on this post.</p>
+        </div>
+        {% endif %}
 
         {% for comment in comments %}
         <div class="border d-flex flex-row bg-white">
