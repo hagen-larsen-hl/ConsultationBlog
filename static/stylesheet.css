@@ -70,6 +70,15 @@
 color: darkgray;
 }
 
+.link-title {
+    text-decoration: underline;
+    color: black;
+}
+
+.link-title:hover {
+color: darkgray;
+}
+
 .float-right {
     float: right;
 }

@@ -13,6 +13,11 @@
     <title>Hustle</title>
 </head>
 
+{% url 'main:logout' as logout_url %}
+{% url 'main:login' as login_url %}
+{% url 'main:register' as register_url %}
+{% url 'blog:create' as create_blog_url %}
+
 <body>
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark nav-main text-white">
         <div class="container-fluid">
@@ -23,7 +28,7 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="#">Create Post</a>
+              <a class="nav-link" href="{{ create_blog_url }}">Create Post</a>
               <a class="nav-link" href="#">All Posts</a>
             </div>
           </div>
@@ -34,13 +39,55 @@
         </div>
       </nav>
 
-    <div id="content" class="background vh-100">
-        <div class="d-flex bg-light h-100">
-                <div class="m-4 w-75">
+    <div id="content" class="background vh-auto">
+        <div class="d-flex bg-light h-auto">
+                <div class="m-4 w-75 h-auto">
                     {% block content %}{% endblock %}
                 </div>
-                <div class="w-25 bg-dark-gray h-100">
-                    {% block sidebar %}{% endblock %}
+                <div class="w-25 bg-dark-gray h-auto">
+                    <div class="px-4">
+                        {% if user.is_authenticated %}
+                        <div class="">
+                            <h2 class="pt-4 display-6">Hi, {{ user.first_name }}</h2>
+                            <a class="btn btn-light" type="button" href="{{ logout_url }}">Logout</a>
+                            </p>
+                        </div>
+                        {% else %}
+                        <div class="">
+                            <h2 class="pt-4 display-6">Register</h2>
+                            <p class="">You experience matters. Sign up to comment on posted articles and suggest ideas for future content.
+                            </p>
+                            <a class="btn btn-light" type="button" href="{{ login_url }}">Login</a>
+                            <a class="btn btn-light" type="button" href="{{ register_url }}">Register</a>
+                        </div>
+                        {% endif %}
+                        <div>
+                            <h2 class="pt-4 display-6">Most Popular</h2>
+                            {% for post in popular_posts %}
+                            {% include 'elements/sidebar_blog_preview.html' with post=post %}
+
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <h2 class="pt-4 display-6">Best Authors</h2>
+                            <div class="d-flex flex-row">
+                                <div>
+                                    <a class="text-truncate link">Author Name</a>
+                                    <p class="text-muted">13 posts</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="pt-4 display-6">Partners</h2>
+                            <div class="d-flex flex-row">
+                                <div>
+                                    <a class="text-truncate link">Agency Title</a>
+                                    <p class="text-muted">4.3/5</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
                 </div>
         </div>
     </div>

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+<div class="p-4 h-auto">
+    <div class="w-100">
+        <p class="display-4">{{ post.title }}</p>
+        <p class="display-8">By: {{ post.author.first_name }} {{ post.author.last_name }}</p>
+        <p class="display-8">Date: {{ post.create_date }}</p>
+    </div>
+    <div class="bg-white h-100 p-4">`
+        <p> {{ post.body|linebreaksbr }}</p>
+    </div>
+</div>
+
+{% endblock %}

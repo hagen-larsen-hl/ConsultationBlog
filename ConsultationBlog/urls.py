@@ -19,6 +19,7 @@ from main import views
 
 urlpatterns = [
     path('', views.landing, name='landing'),
+    path('main/', include('main.urls')),
     path('blog/', include('blog.urls')),
     path('comment/', include('comment.urls')),
     path('admin/', admin.site.urls),

@@ -1,0 +1,9 @@
+<div class="mx-4 h-25 border d-flex flex-row">
+    <div class="w-100">
+        <div class="d-flex align-items-center">
+            <p class="h4 display-8 text-truncate p-2 m-0"><a class="link-title" href="{{ url }}/blog/view/{{ post.id }}">{{ post.title }}</a></p>
+            <p class="h4 display-8 text-truncate p-2 m-0 text-muted">- {{ post.author.first_name }} {{ post.author.last_name }}</p>
+        </div>
+        <p class="text-truncate px-2 text-muted">{{ post.body }}</p>
+    </div>
+</div>
