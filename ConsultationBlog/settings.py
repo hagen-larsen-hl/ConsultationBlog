@@ -56,6 +56,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ConsultationBlog.urls'
 
+CSRF_TRUSTED_ORIGINS = ["https://consultationblog.herokuapp.com"]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

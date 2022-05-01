@@ -42,7 +42,7 @@
                 <a class="navbar-brand">Hi, {{ user.first_name }}</a>
                 <a class="btn btn-light" type="button" href="{{ logout_url }}">Logout</a>
                 {% else %}
-                <a class="btn btn-light" type="button" href="{{ login_url }}">Login</a>
+                <a class="btn btn-light mx-2" type="button" href="{{ login_url }}">Login</a>
                 <a class="btn btn-outline-light" type="button" href="{{ register_url }}">Register</a>
                 {% endif %}
             </form>
