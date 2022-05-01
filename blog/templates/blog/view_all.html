@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="">
+    <h1 class="px-4 text-gray display-4">Browse All Posts</h1>
+    <h4 class="p-4 text-gray display-8">
+        Browse our industry-leading collection of helpful posts and articles. If we don't have what you're looking for,
+        contact us! We value your input and want to publish the content that you want to see.
+    </h4>
+</div>
+
+<div class="card h-auto pb-4">
+    <h1 class="px-4 py-2 display-4">All Posts</h1>
+    <div class="h-auto">
+        {% for post in posts %}
+        {% include "main/elements/blog_preview.html" with post=post %}
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

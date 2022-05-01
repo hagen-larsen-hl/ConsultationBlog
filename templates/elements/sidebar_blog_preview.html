@@ -1,6 +1,4 @@
-<div class="d-flex flex-row">
-    <div>
-        <a class="text-truncate link">{{ post.title }}</a>
-        <p class="text-muted">{{ post.create_date }}</p>
-    </div>
+<div class="w-100">
+    <a href="{{ url }}/blog/view/{{ post.id }}"><p class="text-truncate link m-0">{{ post.title }}</p></a>
+    <p class="text-muted">{{ post.create_date }}</p>
 </div>

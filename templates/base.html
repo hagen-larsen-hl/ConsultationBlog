@@ -17,78 +17,65 @@
 {% url 'main:login' as login_url %}
 {% url 'main:register' as register_url %}
 {% url 'blog:create' as create_blog_url %}
+{% url 'blog:view_all' as view_all_blogs_url %}
+{% url 'landing' as landing_url %}
 
 <body>
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark nav-main text-white">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">OdooItYourself</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="{{ create_blog_url }}">Create Post</a>
-              <a class="nav-link" href="#">All Posts</a>
+            <a class="navbar-brand" href="{{ landing_url }}">OdooItYourself</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="{{ landing_url }}">Home</a>
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{{ create_blog_url }}">Create Post</a>
+                    {% endif %}
+                    <a class="nav-link" href="{{ view_all_blogs_url }}">All Posts</a>
+                </div>
             </div>
-          </div>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
-          </form>
+            <form class="d-flex">
+                {% if user.is_authenticated %}
+                <a class="navbar-brand">Hi, {{ user.first_name }}</a>
+                <a class="btn btn-light" type="button" href="{{ logout_url }}">Logout</a>
+                {% else %}
+                <a class="btn btn-light" type="button" href="{{ login_url }}">Login</a>
+                <a class="btn btn-outline-light" type="button" href="{{ register_url }}">Register</a>
+                {% endif %}
+            </form>
         </div>
-      </nav>
+    </nav>
 
     <div id="content" class="background vh-auto">
         <div class="d-flex bg-light h-auto">
-                <div class="m-4 w-75 h-auto">
-                    {% block content %}{% endblock %}
-                </div>
-                <div class="w-25 bg-dark-gray h-auto">
-                    <div class="px-4">
-                        {% if user.is_authenticated %}
-                        <div class="">
-                            <h2 class="pt-4 display-6">Hi, {{ user.first_name }}</h2>
-                            <a class="btn btn-light" type="button" href="{{ logout_url }}">Logout</a>
-                            </p>
-                        </div>
-                        {% else %}
-                        <div class="">
-                            <h2 class="pt-4 display-6">Register</h2>
-                            <p class="">You experience matters. Sign up to comment on posted articles and suggest ideas for future content.
-                            </p>
-                            <a class="btn btn-light" type="button" href="{{ login_url }}">Login</a>
-                            <a class="btn btn-light" type="button" href="{{ register_url }}">Register</a>
-                        </div>
-                        {% endif %}
-                        <div>
-                            <h2 class="pt-4 display-6">Most Popular</h2>
-                            {% for post in popular_posts %}
-                            {% include 'elements/sidebar_blog_preview.html' with post=post %}
-
-                            {% endfor %}
-                        </div>
-                        <div>
-                            <h2 class="pt-4 display-6">Best Authors</h2>
-                            <div class="d-flex flex-row">
-                                <div>
-                                    <a class="text-truncate link">Author Name</a>
-                                    <p class="text-muted">13 posts</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h2 class="pt-4 display-6">Partners</h2>
-                            <div class="d-flex flex-row">
-                                <div>
-                                    <a class="text-truncate link">Agency Title</a>
-                                    <p class="text-muted">4.3/5</p>
-                                </div>
-                            </div>
-                        </div>
-                    
+            <div class="p-4 w-75 h-auto">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="w-25 bg-dark-gray h-auto">
+                <div class="px-4 w-100">
+                    <div class="w-100">
+                        <h2 class="pt-4 display-6">Your Posts</h2>
+                        {% for post in your_posts %}
+                        {% include 'elements/sidebar_blog_preview.html' with post=post %}
+                        {% endfor %}
                     </div>
+                    <div>
+                        <h2 class="pt-4 display-6">Partners</h2>
+                        <div class="d-flex flex-row">
+                            <div>
+                                <a class="text-truncate link">Your Company Here!</a>
+                                <p class="text-muted">Contact our team to come a preferred partner today. As a preferred
+                                    partner, you will be among the first companies referenced when site users inquire
+                                    about consultation services.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
         </div>
     </div>
 
@@ -99,8 +86,7 @@
 
 </body>
 
-<footer>
-    <div class="nav-main row px-4">
+    <div class="nav-main row m-0 px-4">
         <div class="col-3">
             <p class="display-8 text-light">
                 Additional Information
@@ -115,6 +101,8 @@
             <p class="display-8 text-light">
                 Contact Us
             </p>
+            <p class="text-light">Phone: (435) 123-4567</p>
+            <p class="text-light">Email: support@odooityourself.com</p>
         </div>
         <div class="col-3">
             <p class="display-8 text-light">
@@ -122,6 +110,5 @@
             </p>
         </div>
     </div>
-</footer>
 
 </html>

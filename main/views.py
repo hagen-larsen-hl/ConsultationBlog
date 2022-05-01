@@ -10,7 +10,8 @@ from django.contrib.auth.forms import AuthenticationForm
 def landing(request):
     recent_posts = BlogPost.objects.all()[:4]
     popular_posts = BlogPost.objects.all()[:4]
-    return render(request, "main/landing.html", {'recent_posts': recent_posts, 'popular_posts': popular_posts})
+    your_posts = BlogPost.objects.filter(author__id=request.user.id)
+    return render(request, "main/landing.html", {'recent_posts': recent_posts, 'popular_posts': popular_posts, "your_posts": your_posts})
 
 
 def register_request(request):
