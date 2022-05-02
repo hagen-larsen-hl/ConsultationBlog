@@ -1,6 +1,6 @@
 # ConsultationBlog
 
-This repository contains a Django web application to support a community of software developers. Users can create blog posts and comment on existing posts. This app has a well-defined style, utilizing Bootstrap with custom styling to produce a user-friendly feel.
+This repository contains a Django web application to support a community of software developers. Users can create blog posts and comment on existing posts to help resolve concerns and/or questions raised by other developers. This app has a well-defined style, utilizing Bootstrap with custom styling to produce a user-friendly feel.
 
 ## Build Instructions
 Ensure you have python installed on your machine, or have activated a virtual environment where python is installed.
